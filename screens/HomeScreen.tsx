@@ -10,7 +10,8 @@ import { selectOrigin, setDestination, setOrigin } from "../slices/navSlice";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const origin = useSelector(selectOrigin);
+  
+  // const origin = useSelector(selectOrigin);
 
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
@@ -33,19 +34,16 @@ const HomeScreen = () => {
         minLength={2}
         fetchDetails={true}
         onPress={(data, details) => {
-          try {
+          if(details){
             dispatch(
               setOrigin({
                 location: details?.geometry.location,
                 description: data.description,
               })
             );
-
             dispatch(setDestination(null));
-            console.log(origin.location);
-          } catch (error) {
-            console.log("Blad dispatch");
           }
+            
         }}
         query={{
           key: GOOGLE_MAPS_APIKEY,

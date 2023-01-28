@@ -7,7 +7,7 @@ import { selectOrigin } from '../slices/navSlice';
 
 const Map = () => {
 
-    const origin = useSelector(selectOrigin);
+const origin = useSelector(selectOrigin);
    
 
   return (
