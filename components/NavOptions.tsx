@@ -35,14 +35,14 @@ const data = [
 ];
 
 const NavOptions = () => {
-
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const renderData: ListRenderItem<IData> = ({ item }) => {
     return (
       <TouchableOpacity
-      onPress={() => navigation.navigate(item.screen)}
-      style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-100 rounded-2 m-2 w-40 h-60`}>
+        onPress={() => navigation.navigate(item.screen)}
+        style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-100 rounded-2 m-2 w-40 h-60`}
+      >
         <View>
           <Image
             style={{ width: 120, height: 120, resizeMode: "contain" }}
@@ -51,7 +51,12 @@ const NavOptions = () => {
             }}
           />
           <Text style={tw`mt-2 text-lg font-semibold`}>{item.title}</Text>
-          <Icon style={tw`p-2 bg-black rounded-5 w-10 mt-4`} name="arrowright" color="white" type="antdesign"/>
+          <Icon
+            style={tw`p-2 bg-black rounded-5 w-10 mt-4`}
+            name="arrowright"
+            color="white"
+            type="antdesign"
+          />
         </View>
       </TouchableOpacity>
     );
