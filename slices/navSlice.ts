@@ -18,26 +18,27 @@ const initialState: NavigationState = {
 
 export const navSlice = createSlice({
   name: "nav",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    setOrigin: (state, action: PayloadAction<any>) => {
-      state.origin = action;
+    setOrigin: (state: any, action: PayloadAction<any>) => {
+      state.origin = action.payload;
     },
-    setDestination: (state, action: PayloadAction<any>) => {
-        state.destination = action;
+    setDestination: (state:any, action: PayloadAction<any>) => {
+      state.destination = action.payload;
     },
-    setTravelTimeInformation: (state, action: PayloadAction<any>) => {
-        state.travelTimeInformation = action;
+    setTravelTimeInformation: (state:any, action: PayloadAction<any>) => {
+      state.travelTimeInformation = action.payload;
     },
   },
 });
 
-export const { setOrigin, setDestination, setTravelTimeInformation } = navSlice.actions;
+export const { setOrigin, setDestination, setTravelTimeInformation } =
+  navSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectOrigin = (state: RootState) => state.nav.origin;
 export const selectDestination = (state: RootState) => state.nav.destination;
-export const selectTravelTimeInfromation = (state: RootState) => state.nav.travelTimeInformation;
+export const selectTravelTimeInfromation = (state: RootState) =>
+  state.nav.travelTimeInformation;
 
 export default navSlice.reducer;
