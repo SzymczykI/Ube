@@ -11,6 +11,9 @@ import React from "react";
 import tw from "twrnc";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../slices/navSlice";
+
 
 export interface IData {
   id: string;
@@ -36,15 +39,17 @@ const data = [
 
 const NavOptions = () => {
   const navigation = useNavigation();
+  const origin = useSelector(selectOrigin);
+  const opacity = !origin ? "opacity-20" : "";
 
   const renderData: ListRenderItem<IData> = ({ item }) => {
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate(item.screen)}
         style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-100 rounded-2 m-2 w-40 h-60`}
-        
+        disabled={!origin}
       >
-        <View>
+        <View style={tw`${opacity}`}>
           <Image
             style={{ width: 120, height: 120, resizeMode: "contain" }}
             source={{
